@@ -2,9 +2,10 @@
   "name": "01-graphql-course",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r sucrase/register src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +13,9 @@
   "dependencies": {
     "apollo-server": "^3.13.0",
     "graphql": "^16.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "sucrase": "^3.35.0"
   }
 }
