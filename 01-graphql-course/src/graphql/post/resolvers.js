@@ -1,26 +1,20 @@
-const post = () => {
-  return {
-    id: '1jf39nf-229f',
-    title: 'First Post'
-  }
+const posts = async (_, __, { getPosts }) => {
+  const posts = await getPosts();
+  return posts.json();
 }
 
-const posts = () => {
-  return [{
-    id: '1jf39nf-229f',
-    title: 'First Post'
-  },{
-    id: '193rf3-f2jf32',
-    title: 'Second Post'
-  },{
-    id: 'd108d89-jd01d',
-    title: 'Third Post'
-  }]
+const post = async (_, { id }, { getPosts }) => {
+  const response = await getPosts('/' + id);
+  const post = await response.json();
+  return post;
 }
 
 export const postResolvers = {
-  Query: {
-    post,
-    posts
+  Query: { post, posts },
+  Post: {
+    unixTimestamp: ({ createdAt }) => {
+      const timestamp = new Date(createdAt).getTime() / 1000;
+      return Math.floor(timestamp);
+    }
   }
 }
