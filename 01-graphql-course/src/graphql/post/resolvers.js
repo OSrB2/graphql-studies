@@ -1,10 +1,19 @@
 const post = async (_, { id }, { getPosts }) => {
   const response = await getPosts('/' + id);
 
+  if (Math.random() > 0.5) {
+    return {
+      statusCode: 500,
+      message: 'Post timeout!',
+      timeout: 123,
+    }
+  }
+
   if (!response.ok) {
     return {
       statusCode: 404,
       message: 'Post not found',
+      postId: id,
     };
   }
 
@@ -29,9 +38,18 @@ export const postResolvers = {
   },
   PostResult: {
     __resolveType: (obj) => {
-      if (typeof obj.statusCode !== 'undefined') return 'PostNotFoundError';
+      if (typeof obj.postId !== 'undefined') return 'PostNotFoundError';
+      if (typeof obj.timeout !== 'undefined') return 'PostTimeoutError';
       if (typeof obj.id !== 'undefined') return 'Post';
       return null;
     },
   },
+
+  PostError: {
+     __resolveType: (obj) => {
+      if (typeof obj.postId !== 'undefined') return 'PostNotFoundError';
+      if (typeof obj.timeout !== 'undefined') return 'PostTimeoutError';
+      return null;
+    },
+  }
 };
