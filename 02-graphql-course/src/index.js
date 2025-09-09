@@ -6,7 +6,7 @@ import { PostsApi } from './graphql/post/datasources';
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: context,
+  context,
   dataSources: () => {
     return {
       postApi: new PostsApi(),
