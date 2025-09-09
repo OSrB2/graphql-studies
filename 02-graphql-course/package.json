@@ -1,0 +1,23 @@
+{
+  "name": "01-graphql-course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r sucrase/register src/index.js",
+    "server": "json-server --watch db.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.13.0",
+    "graphql": "^16.11.0",
+    "json-server": "^1.0.0-beta.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "sucrase": "^3.35.0"
+  }
+}
