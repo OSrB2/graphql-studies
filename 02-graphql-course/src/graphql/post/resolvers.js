@@ -10,16 +10,8 @@ const posts = async (_, { input }, { dataSources }) => {
 };
 
 // MUTATION RESOLVERS
-const createPost = async (_, args, { dataSources }) => {
-  console.log(args);
-  return {
-      "id": "607",
-      "title": "Laborum optio sunt aut ut ut ut.",
-      "body": "Sit sed deserunt libero nulla in culpa.",
-      "userId": "439",
-      "indexRef": 24,
-      "createdAt": "2019-02-12T01:13:25.622Z"
-    };
+const createPost = async (_, { data }, { dataSources }) => {
+  return dataSources.postApi.createPost(data);
 };
 
 // FIELD RESOLVERS

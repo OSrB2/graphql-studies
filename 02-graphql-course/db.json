@@ -353,6 +353,13 @@
       "userId": "502",
       "indexRef": 19,
       "createdAt": "2017-04-26T19:39:05.420Z"
+    },
+    {
+      "id": "49a4",
+      "title": "O título",
+      "body": "O contúdo",
+      "userId": "903",
+      "indexRef": 2
     }
   ],
   "comments": [
