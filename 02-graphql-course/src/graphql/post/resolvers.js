@@ -14,6 +14,10 @@ const createPost = async (_, { data }, { dataSources }) => {
   return dataSources.postApi.createPost(data);
 };
 
+const updatePost = async (_, { postId, data }, { dataSources }) => {
+  return dataSources.postApi.updatePost(postId, data);
+};
+
 // FIELD RESOLVERS
 
 const user = async ({ userId }, _, { dataSources }) => {
@@ -22,6 +26,6 @@ const user = async ({ userId }, _, { dataSources }) => {
 
 export const postResolvers = {
   Query: { post, posts },
-  Mutation: { createPost },
+  Mutation: { createPost, updatePost },
   Post: { user },
 };
