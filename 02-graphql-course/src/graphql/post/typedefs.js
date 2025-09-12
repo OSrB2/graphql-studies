@@ -9,6 +9,7 @@ export const postTypeDefs = gql`
   extend type Mutation {
     createPost(data: CreatePostInput!): Post!
     updatePost(postId: ID!, data: UpdatePostInput!): Post!
+    deletePost(postId: ID!): Boolean
   }
 
   type Post {
@@ -30,5 +31,9 @@ export const postTypeDefs = gql`
     title: String
     body: String
     userId: String
+  }
+
+  input DeletePostInput {
+    id: ID!
   }
 `;
